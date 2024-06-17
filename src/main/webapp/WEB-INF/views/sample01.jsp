@@ -9,10 +9,6 @@
 <body>
 	I'm sample01.jsp file!<br><br>
 	<a href="home">home.jsp로 가기</a><br><br>
-	<img src="resources/img/btterfly.png">	
-	
-	
-	
-	
+	<img src="resources/img/btterfly.png">		
 </body>
 </html>

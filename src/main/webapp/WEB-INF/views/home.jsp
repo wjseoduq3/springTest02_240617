@@ -10,10 +10,7 @@
 <h1>
 	Hello world!  
 </h1>
-
-<P>  The time on the server is ${serverTime}. </P>
-
 <br>
-<a href="test">sample01.jsp로 가기</a>
+<a href="sample01">sample01.jsp로 가기</a>
 </body>
 </html>

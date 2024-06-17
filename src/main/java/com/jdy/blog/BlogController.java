@@ -20,8 +20,8 @@ public class BlogController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "user/test01")
-	public String test01() {
+	@RequestMapping(value = "/sample01")
+	public String sample01() {
 		return "sample01";
 	}
 	
@@ -41,18 +41,18 @@ public class BlogController {
 		return "login";
 	}
 	
-	@RequestMapping(value = "/loginOk")
-	public String loginOk(HttpServletRequest request, Model model) {
-		
-	String mid = request.getParameter("memberid");
-	String mpw = request.getParameter("memberpw");
-		
-	model.addAttribute("loginid", mid);
-	model.addAttribute("loginpw", mpw);
-	model.addAttribute("user", "홍길동");
-			
-	return "loginOk";
-	}
+//	@RequestMapping(value = "/loginOk")
+//	public String loginOk(HttpServletRequest request, Model model) {
+//		
+//	String mid = request.getParameter("memberid");
+//	String mpw = request.getParameter("memberpw");
+//		
+//	model.addAttribute("loginid", mid);
+//	model.addAttribute("loginpw", mpw);
+//	model.addAttribute("user", "홍길동");
+//			
+//	return "loginOk";
+//	}
 	
 //	@RequestMapping(value = "/loginOk")
 //	public ModelAndView loginOk(HttpServletRequest request, ModelAndView mv) {
@@ -67,12 +67,10 @@ public class BlogController {
 //			
 //		return mv;
 //	}
+	
 	@RequestMapping(value = "/loginOk")
 	public String loginOk(@RequestParam("memberid") String mid, @RequestParam("memberpw") String mpw, Model model) {
-		
-	// String mid = request.getParameter("memberid");
-	// String mpw = request.getParameter("memberpw");
-		
+			
 	model.addAttribute("loginid", mid);
 	model.addAttribute("loginpw", mpw);
 	model.addAttribute("user", "홍길동");
@@ -92,26 +90,43 @@ public class BlogController {
 //		String mname = request.getParameter("membername");
 //		String mage = request.getParameter("memberage");
 //		String memail = request.getParameter("memberemail");
+//				
+//		model.addAttribute("mid", mid);
+//		model.addAttribute("mpw", mpw);
+//		model.addAttribute("mname", mname);
+//		model.addAttribute("mage", mage);
+//		model.addAttribute("memail", memail);
+//			
+//		return "joinOk";
+//	}
+
+//	@RequestMapping(value = "/joinOk")
+//	public String joinOk(HttpServletRequest request, Model model) {
 //		
-////		MemberDto memberDto = new MemberDto(mid, mpw, mname, mage, memail);
+//		String mid = request.getParameter("memberid");
+//		String mpw = request.getParameter("memberpw");
+//		String mname = request.getParameter("membername");
+//		String mage = request.getParameter("memberage");
+//		String memail = request.getParameter("memberemail");
+
+//		방법 1
+//		MemberDto memberDto = new MemberDto(mid, mpw, mname, mage, memail);
+//		아래 부분과 aliternative 관계		
+
+//		방법 2		
 //		MemberDto memberDto = new MemberDto();
 //		memberDto.setMemberid(mid);
 //		memberDto.setMemberpw(mpw);
 //		memberDto.setMembername(mname);
 //		memberDto.setMemberage(mage);
 //		memberDto.setMemberemail(memail);
-//		
-////		model.addAttribute("mid", mid);
-////		model.addAttribute("mpw", mpw);
-////		model.addAttribute("mname", mname);
-////		model.addAttribute("mage", mage);
-////		model.addAttribute("memail", memail);
-//		
+//				
 //		model.addAttribute("mdto", memberDto);
 //		
 //		return "joinOk";
 //	}
 	
+//  방법 3	
 	@RequestMapping(value = "/joinOk")
 	public String joinOk(MemberDto memberDto, Model model) {
 				
@@ -123,10 +138,7 @@ public class BlogController {
 	@RequestMapping (value = "/student/{studentId}")
 	public String student(@PathVariable String studentId, Model model) {
 		model.addAttribute("sid", studentId);
-		return "studentId";
+		return "studentid";
 	}
-	
-
-	
 	
 }
