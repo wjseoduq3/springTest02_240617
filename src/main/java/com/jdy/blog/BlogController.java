@@ -5,6 +5,8 @@ import java.lang.reflect.Member;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -39,18 +41,18 @@ public class BlogController {
 		return "login";
 	}
 	
-	// @RequestMapping(value = "/loginOk")
-	// public String loginOk(HttpServletRequest request, Model model) {
+	@RequestMapping(value = "/loginOk")
+	public String loginOk(HttpServletRequest request, Model model) {
 		
-	//  String mid = request.getParameter("memberid");
-	//	String mpw = request.getParameter("memberpw");
+	String mid = request.getParameter("memberid");
+	String mpw = request.getParameter("memberpw");
 		
-	//	model.addAttribute("loginid", mid);
-	//	model.addAttribute("loginpw", mpw);
-	//	model.addAttribute("user", "홍길동");
+	model.addAttribute("loginid", mid);
+	model.addAttribute("loginpw", mpw);
+	model.addAttribute("user", "홍길동");
 			
-	//	return "loginOk";
-	//}
+	return "loginOk";
+	}
 	
 //	@RequestMapping(value = "/loginOk")
 //	public ModelAndView loginOk(HttpServletRequest request, ModelAndView mv) {
@@ -83,27 +85,48 @@ public class BlogController {
 		return "join";
 	}
 	
+//	@RequestMapping(value = "/joinOk")
+//	public String joinOk(HttpServletRequest request, Model model) {
+//		String mid = request.getParameter("memberid");
+//		String mpw = request.getParameter("memberpw");
+//		String mname = request.getParameter("membername");
+//		String mage = request.getParameter("memberage");
+//		String memail = request.getParameter("memberemail");
+//		
+////		MemberDto memberDto = new MemberDto(mid, mpw, mname, mage, memail);
+//		MemberDto memberDto = new MemberDto();
+//		memberDto.setMemberid(mid);
+//		memberDto.setMemberpw(mpw);
+//		memberDto.setMembername(mname);
+//		memberDto.setMemberage(mage);
+//		memberDto.setMemberemail(memail);
+//		
+////		model.addAttribute("mid", mid);
+////		model.addAttribute("mpw", mpw);
+////		model.addAttribute("mname", mname);
+////		model.addAttribute("mage", mage);
+////		model.addAttribute("memail", memail);
+//		
+//		model.addAttribute("mdto", memberDto);
+//		
+//		return "joinOk";
+//	}
+	
 	@RequestMapping(value = "/joinOk")
-	public String joinOk(HttpServletRequest request, Model model) {
-		String mid = request.getParameter("memberid");
-		String mpw = request.getParameter("memberpw");
-		String mname = request.getParameter("membername");
-		String mage = request.getParameter("memberage");
-		String memail = request.getParameter("memberemail");
-		
-		MemberDto memberDto = new MemberDto(mid, mpw, mname, mage, memail);
-		
-//		model.addAttribute("mid", mid);
-//		model.addAttribute("mpw", mpw);
-//		model.addAttribute("mname", mname);
-//		model.addAttribute("mage", mage);
-//		model.addAttribute("memail", memail);
-		
+	public String joinOk(MemberDto memberDto, Model model) {
+				
 		model.addAttribute("mdto", memberDto);
 		
 		return "joinOk";
 	}
 	
+	@RequestMapping (value = "/student/{studentId}")
+	public String student(@PathVariable String studentId, Model model) {
+		model.addAttribute("sid", studentId);
+		return "studentId";
+	}
+	
+
 	
 	
 }
